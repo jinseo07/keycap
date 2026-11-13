@@ -22,6 +22,3 @@ __KEYCAP__.state();
 ```
 
 API는 `press(key)`, `release(key)`, `restart()`, `selectStage(number)`, `state()`, `stages()`를 제공합니다. 반복 개발 규칙은 [AGENTS.md](AGENTS.md)에 있습니다.
-
-## GitHub Pages
-저장소의 **Settings → Pages → Build and deployment**에서 **Deploy from a branch**, `main`, `/(root)`를 선택해 저장하면 Pages로 배포할 수 있습니다. 배포가 완료되면 `https://jinseo07.github.io/keycap/`에서 실행됩니다. 저장소 공개 범위와 계정 요금제에 따라 Pages 사용 가능 여부가 달라질 수 있습니다.
