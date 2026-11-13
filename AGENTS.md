@@ -25,5 +25,23 @@
 - `state()`: 현재 단계, 눌린 키, 행동 수, 완료 상태 반환
 - `stages()`: 단계 목표와 입력 규칙 반환
 
+
+## Fresh-agent playtest loop
+
+Run this loop only when the user asks for a game QA/playtest loop.
+
+1. Start or refresh the actual game build in a browser. Prefer the local repository preview; exercise the real interface, not only source inspection or the harness API.
+2. Spawn a new, independent tester agent for this round. Give it the current URL, the five-stage goal, device/viewport, and a request to play every stage from a clean state. Do not give it previous-round findings or a suggested answer. Ask it not to edit files.
+3. Require the tester to report reproducible findings with severity, exact steps, expected and actual result, and evidence. Ask separately for one high-confidence usability improvement. Mark unverified assumptions clearly.
+4. Triage findings. Fix reproducible blockers, incorrect state/solution behavior, and clear usability problems. Skip subjective polish unless it materially improves play.
+5. Re-run the affected interaction yourself, then ask a different fresh tester to play the changed build.
+
+## Stability and stop conditions
+
+- Stop early only after two consecutive fresh testers independently complete all five stages and report no reproducible correctness issue or high-value usability improvement.
+- Limit a run to six rounds. If meaningful findings remain at the limit, stop and report them as unresolved; do not claim stability.
+- If a browser or fresh-agent tool is unavailable, do not claim a playtest pass. State what could not be exercised and continue only with checks that are actually possible.
+- End with a short report of rounds run, findings fixed, actual play evidence, remaining issues, and why the loop stopped.
+
 ## 보고
 각 반복 후 변경 파일, 실제로 실행해 확인한 조작, 남은 문제를 요약한다. 수행하지 않은 검증을 완료했다고 말하지 않는다.
