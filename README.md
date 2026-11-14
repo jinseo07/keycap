@@ -1,6 +1,6 @@
 # KEY / HOLD
 
-키를 누르고, 유지하고, 놓는 순서를 푸는 5단계 논리 퍼즐입니다. 시간 제한 없이 화면 키캡 또는 물리 키보드로 플레이합니다. 동시 입력은 최대 두 키입니다.
+키를 누르고 유지한 뒤 놓는 순서를 푸는 5단계 논리 퍼즐입니다. 화면 키캡과 물리 키보드 모두 누르고 있는 동안 키가 유지되며, 동시에 최대 열 개까지 유지할 수 있습니다. 시간 제한은 없습니다.
 
 ## 로컬에서 실행
 `index.html`을 브라우저에서 열거나 저장소 루트에서 정적 서버를 실행하세요.
@@ -18,7 +18,8 @@ python -m http.server 4173
 __KEYCAP__.restart();
 __KEYCAP__.press("F");
 __KEYCAP__.press("J");
-__KEYCAP__.state();
+__KEYCAP__.state(); // F와 J가 눌린 상태
+__KEYCAP__.release("F");
 ```
 
 API는 `press(key)`, `release(key)`, `restart()`, `selectStage(number)`, `state()`, `stages()`를 제공합니다. 반복 개발 규칙은 [AGENTS.md](AGENTS.md)에 있습니다.
