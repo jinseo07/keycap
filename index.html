@@ -18,7 +18,7 @@ main{flex:1;display:flex;flex-direction:column;justify-content:center}.intro,.ga
 <body><div class="shell">
 <header class="top"><div class="brand"><span class="mark">⌘</span> KEY / HOLD</div><div>LOGIC STUDY 01 <button id="help">HOW TO PLAY</button></div></header>
 <main>
-<section class="intro"><div><div class="eye">A small puzzle about letting go</div><h1>손가락의 순서를 설계하세요.</h1><p>시작 키 3개를 동시에 누르면 시작합니다. 목표 키 3개까지 정해진 순서로 이동하세요.</p></div><div class="count"><strong id="count">01 / 05</strong>PUZZLE SET</div></section>
+<section class="intro"><div><div class="eye">A small puzzle about letting go</div><h1>손가락의 순서를 설계하세요.</h1><p>시작 키 3개를 동시에 누르면 시작합니다. 시작 조합을 유지한 채 목표 키를 먼저 누르고, 목표에서 빠지는 키를 놓으세요. 중간에는 4개까지 함께 눌릴 수 있습니다.</p></div><div class="count"><strong id="count">01 / 05</strong>PUZZLE SET</div></section>
 <section class="game">
 <div class="head"><div class="heading"><span class="number" id="num">01</span><div><h2 id="title">첫 번째 고리</h2><span class="tag" id="tag"></span></div></div><button id="restart" title="현재 퍼즐 다시 시작">↺ 다시 시작</button></div>
 <nav class="tabs" id="tabs" aria-label="퍼즐 단계"></nav>
@@ -36,9 +36,9 @@ main{flex:1;display:flex;flex-direction:column;justify-content:center}.intro,.ga
 const levels=[
  {title:"첫 번째 교체",tag:"ONE SWAP · KEEP THREE",difficulty:"01 · BEGINNER",start:["F","J","K"],goal:["J","K","D"],keys:["F","J","K","D"],hints:["목표에만 있는 D를 먼저 누르세요.","D를 누른 뒤 목표에 없는 F를 놓으세요.","한 가지 풀이: D를 누르고 F를 놓습니다."],success:"좋아요. 세 키 목표 조합에 도달했어요."},
  {title:"두 번 바꾸기",tag:"TWO SWAPS · KEEP D",difficulty:"02 · EASY",start:["A","S","D"],goal:["D","F","G"],keys:["A","S","D","F","G"],hints:["D는 시작과 목표에 모두 있으니 계속 누르고 있어야 합니다.","F와 G를 누른 뒤, 목표에 없는 A와 S를 놓으세요.","한 가지 풀이: F를 누르고 A를 놓은 뒤 G를 누르고 S를 놓습니다."],success:"두 번 교체해 목표 조합을 만들었어요."},
- {title:"다리 유지하기",tag:"BRIDGE · KEEP F",difficulty:"03 · NORMAL",start:["F","J","K"],goal:["F","D","S"],keys:["F","J","K","D","S"],hints:["F는 시작과 목표에 모두 있으니 끝까지 유지하세요.","D와 S를 누른 뒤, 목표에 없는 J와 K를 놓으세요.","한 가지 풀이: D를 누르고 J를 놓은 뒤 S를 누르고 K를 놓습니다."],success:"F를 유지하면서 목표 조합을 만들었어요."},
- {title:"세 번 바꾸기",tag:"THREE SWAPS · TOP ROW",difficulty:"04 · ADVANCED",start:["Q","W","E"],goal:["R","T","Y"],keys:["Q","W","E","R","T","Y"],hints:["목표 키 R, T, Y를 하나씩 더해야 합니다.","새 목표 키를 눌러 네 키가 되면 목표에 없는 키를 하나 놓으세요.","한 가지 풀이: R/Q, T/W, Y/E 순서로 교체합니다."],success:"세 키를 모두 바꿔 목표 조합에 도달했어요."},
- {title:"손가락 연쇄",tag:"THREE SWAPS · BOTTOM ROW",difficulty:"05 · EXPERT",start:["Q","W","E"],goal:["Z","X","C"],keys:["Q","W","E","Z","X","C"],hints:["목표 조합 Z, X, C는 시작 조합과 겹치지 않습니다.","키보드 아래쪽 행으로 한 키씩 옮기며 네 키 제한을 지키세요.","한 가지 풀이: Z/Q, X/W, C/E 순서로 교체합니다."],success:"연쇄 완료. 마지막 세 키만 눌린 상태예요."}
+ {title:"세 키 모두 교체",tag:"THREE SWAPS · HOME ROW",difficulty:"03 · NORMAL",start:["F","J","K"],goal:["D","G","L"],keys:["F","J","K","D","G","L"],hints:["이번에는 시작 키가 목표 조합에 하나도 남지 않습니다.","목표 키를 하나 누르고 네 키가 되면 목표에 없는 키 하나를 놓으세요.","한 가지 풀이: D/F, G/J, L/K 순서로 교체합니다."],success:"세 키를 모두 교체했어요."},
+ {title:"가운데 줄로 이동",tag:"THREE SWAPS · HOME ROW",difficulty:"04 · ADVANCED",start:["Q","W","E"],goal:["A","S","D"],keys:["Q","W","E","A","S","D"],hints:["목표 키 A, S, D는 키보드 가운데 줄에 있습니다.","새 목표 키를 하나씩 누르고, 네 키가 되면 목표에 없는 키를 놓으세요.","한 가지 풀이: A/Q, S/W, D/E 순서로 교체합니다."],success:"가운데 줄 목표 조합에 도달했어요."},
+ {title:"손가락 연쇄",tag:"THREE SWAPS · CROSS ROWS",difficulty:"05 · EXPERT",start:["F","J","K"],goal:["Q","W","E"],keys:["F","J","K","Q","W","E"],hints:["목표 조합 Q, W, E는 위쪽 줄에 있고 시작 조합은 가운데 줄에 있습니다.","목표 키를 하나씩 누르고, 네 키가 되면 목표에 없는 키를 놓으세요.","한 가지 풀이: Q/F, W/J, E/K 순서로 교체합니다."],success:"연쇄 완료. 위쪽 줄의 목표 조합에 도달했어요."}
 ];
 const MAX_HELD_KEYS=4;
 const rows=[["Q","W","E","R","T","Y","U","I","O","P"],["A","S","D","F","G","H","J","K","L",";"],["Z","X","C","V","B","N","M",",",".","/"]];
