@@ -36,7 +36,7 @@ const levels=[
  {title:"놓는 타이밍",tag:"RELEASE · ORDER MATTERS",difficulty:"02 · EASY",start:["F"],goal:["J"],keys:["F","J"],hint:"F는 이미 눌려 있어요. J를 누른 채 F를 놓으세요.",rules:["P:J","R:F"],success:"놓는 순간까지 계획했어요."},
  {title:"문을 통과하는 순서",tag:"SEQUENCE · RELEASE ORDER",difficulty:"03 · NORMAL",start:["C"],goal:["D","K"],keys:["C","D","K"],hint:"C가 눌려 있을 때 D, 다음 C를 놓고 마지막으로 K.",rules:["P:D","R:C","P:K"],success:"정해진 누르기와 놓기 순서를 지켰어요."},
  {title:"다리 놓기",tag:"BRIDGE · RELEASE TO MOVE",difficulty:"04 · ADVANCED",start:["A"],goal:["L"],keys:["A","S","L"],hint:"S를 A와 함께 누르세요. A를 놓고 L을 누른 다음 S를 놓으세요.",rules:["P:S","R:A","P:L","R:S"],success:"다리를 건너고 나서 놓았어요."},
- {title:"손가락 연쇄",tag:"CHAIN · THREE-KEY BRIDGE",difficulty:"05 · EXPERT",start:["F"],goal:[";"],keys:["F","J","K",";"],hint:"다음 키를 먼저 눌러 겹치세요: F → J → K → ;. 세 키가 겹친 뒤 F를 놓고, 마지막 키만 남기세요.",rules:["P:J","P:K","R:F","P:;","R:J","R:K"],success:"연쇄 완료. 세 키를 겹쳐 유지하고 마지막 키만 남겼어요."}
+ {title:"손가락 연쇄",tag:"CHAIN · FOUR-KEY BRIDGE",difficulty:"05 · EXPERT",start:["F"],goal:[";"],keys:["F","J","K",";"],hint:"F를 유지한 채 J, K, ;를 차례로 누르세요. 네 키를 모두 유지한 뒤 F, J, K 순서로 놓으세요.",rules:["P:J","P:K","P:;","R:F","R:J","R:K"],success:"연쇄 완료. 네 키를 겹쳐 유지한 뒤 마지막 키만 남겼어요."}
 ];
 const MAX_HELD_KEYS=10;
 const rows=[["Q","W","E","R","T","Y","U","I","O","P"],["A","S","D","F","G","H","J","K","L",";"],["Z","X","C","V","B","N","M",",",".","/"]];
