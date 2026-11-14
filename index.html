@@ -41,7 +41,7 @@ const levels=[
 const MAX_HELD_KEYS=10;
 const rows=[["Q","W","E","R","T","Y","U","I","O","P"],["A","S","D","F","G","H","J","K","L",";"],["Z","X","C","V","B","N","M",",",".","/"]];
 const $=id=>document.getElementById(id);let ix=0,solved=new Set(),history=[],pressed=new Set(),pointerHeld=new Map(),buttonHeld=new Map(),state,toastTimer;
-function fresh(){state={held:[...levels[ix].start],step:0,actions:0,done:false};history=[];pressed.clear();$("status").textContent="";render()}
+function fresh(){state={held:[...levels[ix].start],step:0,actions:0,done:false};history=[];pressed.clear();pointerHeld.clear();buttonHeld.clear();$("status").textContent="";render()}
 function say(s){$("status").textContent=s}
 function act(type,key){key=key.toUpperCase();const l=levels[ix],token=(type==="press"?"P:":"R:")+key;if(state.done||!l.keys.includes(key))return;
 const held=state.held.includes(key);if(type==="press"&&held||type==="release"&&!held)return;
